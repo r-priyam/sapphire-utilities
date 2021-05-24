@@ -2,42 +2,81 @@
 
 ![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)
 
-# Sapphire Utilities
+# @sapphire/string-store
 
-**Common NodeJS packages for Sapphire Repositories and others.**
+**Conveniently store a lot of data into a very small payload**
 
 [![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)
 [![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)
-
-**Packages**
-
-[![npm](https://img.shields.io/npm/v/@sapphire/async-queue?color=crimson&logo=npm&style=flat-square&label=@sapphire/async-queue)](https://www.npmjs.com/package/@sapphire/async-queue)
-[![npm](https://img.shields.io/npm/v/@sapphire/decorators?color=crimson&logo=npm&style=flat-square&label=@sapphire/decorators)](https://www.npmjs.com/package/@sapphire/decorators)
-[![npm](https://img.shields.io/npm/v/@sapphire/discord-utilities?color=crimson&logo=npm&style=flat-square&label=@sapphire/discord-utilities)](https://www.npmjs.com/package/@sapphire/discord-utilities)
-[![npm](https://img.shields.io/npm/v/@sapphire/discord.js-utilities?color=crimson&logo=npm&style=flat-square&label=@sapphire/discord.js-utilities)](https://www.npmjs.com/package/@sapphire/discord.js-utilities)
-[![npm](https://img.shields.io/npm/v/@sapphire/eslint-config?color=crimson&logo=npm&style=flat-square&label=@sapphire/eslint-config)](https://www.npmjs.com/package/@sapphire/eslint-config)
-[![npm](https://img.shields.io/npm/v/@sapphire/event-iterator?color=crimson&logo=npm&style=flat-square&label=@sapphire/event-iterator)](https://www.npmjs.com/package/@sapphire/event-iterator)
-[![npm](https://img.shields.io/npm/v/@sapphire/phisherman?color=crimson&logo=npm&style=flat-square&label=@sapphire/phisherman)](https://www.npmjs.com/package/@sapphire/phisherman)
-[![npm](https://img.shields.io/npm/v/@sapphire/prettier-config?color=crimson&logo=npm&style=flat-square&label=@sapphire/prettier-config)](https://www.npmjs.com/package/@sapphire/prettier-config)
-[![npm](https://img.shields.io/npm/v/@sapphire/fetch?color=crimson&logo=npm&style=flat-square&label=@sapphire/fetch)](https://www.npmjs.com/package/@sapphire/fetch)
-[![npm](https://img.shields.io/npm/v/@sapphire/ratelimits?color=crimson&logo=npm&style=flat-square&label=@sapphire/ratelimits)](https://www.npmjs.com/package/@sapphire/ratelimits)
-[![npm](https://img.shields.io/npm/v/@sapphire/result?color=crimson&logo=npm&style=flat-square&label=@sapphire/result)](https://www.npmjs.com/package/@sapphire/result)
-[![npm](https://img.shields.io/npm/v/@sapphire/stopwatch?color=crimson&logo=npm&style=flat-square&label=@sapphire/stopwatch)](https://www.npmjs.com/package/@sapphire/stopwatch)
-[![npm](https://img.shields.io/npm/v/@sapphire/snowflake?color=crimson&logo=npm&style=flat-square&label=@sapphire/snowflake)](https://www.npmjs.com/package/@sapphire/snowflake)
-[![npm](https://img.shields.io/npm/v/@sapphire/string-store?color=crimson&logo=npm&style=flat-square&label=@sapphire/string-store)](https://www.npmjs.com/package/@sapphire/string-store)
-[![npm](https://img.shields.io/npm/v/@sapphire/time-utilities?color=crimson&logo=npm&style=flat-square&label=@sapphire/time-utilities)](https://www.npmjs.com/package/@sapphire/time-utilities)
-[![npm](https://img.shields.io/npm/v/@sapphire/ts-config?color=crimson&logo=npm&style=flat-square&label=@sapphire/ts-config)](https://www.npmjs.com/package/@sapphire/ts-config)
-[![npm](https://img.shields.io/npm/v/@sapphire/utilities?color=crimson&logo=npm&style=flat-square&label=@sapphire/utilities)](https://www.npmjs.com/package/@sapphire/utilities)
-[![npm](https://img.shields.io/npm/v/@sapphire/phisherman?color=crimson&logo=npm&style=flat-square&label=@sapphire/phisherman)](https://www.npmjs.com/package/@sapphire/phisherman)
-[![npm](https://img.shields.io/npm/v/@sapphire/lexure?color=crimson&logo=npm&style=flat-square&label=@sapphire/lexure)](https://www.npmjs.com/package/@sapphire/lexure)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/string-store?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/string-store)
+[![npm](https://img.shields.io/npm/v/@sapphire/string-store?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/string-store)
+[![Depfu](https://badges.depfu.com/badges/ec42ff3d6bae55eee1de4749960852b3/count.svg)](https://depfu.com/github/sapphiredev/utilities?project_id=15195)
 
 </div>
+
+**Table of Contents**
+
+-   [Description](#description)
+-   [Features](#features)
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Basic Usage](#basic-usage)
+-   [Buy us some doughnuts](#buy-us-some-doughnuts)
+-   [Contributors ✨](#contributors-%E2%9C%A8)
+
+## Description
+
+When working on Discord bots you often want to send a message with interactions and attach a `customId` to that
+interaction. You can use this `customId` to identify the interaction. However because Discord does not offer a way to
+pass custom metadata to such an interaction, we are forced to store it somewhere else. At the same time, the `customId`
+is limited to 100 characters. Because of all of these factors we have made `@sapphire/string-store`. You can use this
+package to compress your metadata into a string and send it with the `customId`. `@sapphire/string-store` is designed to
+give you an extremely efficient string so you are very unlikely to exceed the 100 character limit.
+
+## Features
+
+-   Written in TypeScript
+-   Fully tested
+-   Extremely efficient compression
+
+## Installation
+
+You can use the following command to install this package, or replace `npm install` with your package manager of choice.
+
+```sh
+npm install @sapphire/stopwatch
+```
+
+## Usage
+
+**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { StringStore } = require('@sapphire/string-store')` equals `import { StringStore } from '@sapphire/string-store'`.
+
+### Basic Usage
+
+```ts
+// Import the StringStore class
+const { StringStore, Types } = require('@sapphire/string-store');
+
+// Create a new StringStore
+const store = new StringStore()
+	.add('pair', (builder) => builder.add('user', Types.Snowflake).add('target', Types.Snowflake))
+	.add('connect-four', (builder) => builder.add('user', Types.Snowflake).add('target', Types.Snowflake).add('board', Types.Array(Types.Bit2, 42)));
+
+const raw = store.serialize('pair', '242043489611808770', '266624760782258187');
+console.log(raw.length);
+// -> 17
+
+const value = store.deserialize(raw);
+// -> { type: 'pair', user: '242043489611808770', target: '266624760782258187' }
+```
+
+---
 
 ## Buy us some doughnuts
 
 Sapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!
 
-We accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.
+We accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.
 
 |   Donate With   |                       Address                       |
 | :-------------: | :-------------------------------------------------: |
@@ -85,25 +124,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://gitlab.com/DavidPH/"><img src="https://avatars.githubusercontent.com/u/44669930?v=4?s=100" width="100px;" alt=""/><br /><sub><b>David</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=DavidPHH" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/apps/renovate"><img src="https://avatars.githubusercontent.com/in/2740?v=4?s=100" width="100px;" alt=""/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href="#maintenance-renovate[bot]" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://renovate.whitesourcesoftware.com/"><img src="https://avatars.githubusercontent.com/u/25180681?v=4?s=100" width="100px;" alt=""/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href="#maintenance-renovate-bot" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://fc5570.me/"><img src="https://avatars.githubusercontent.com/u/68158483?v=4?s=100" width="100px;" alt=""/><br /><sub><b>FC</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=FC5570" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Tokipudi"><img src="https://avatars.githubusercontent.com/u/29551076?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jérémy de Saint Denis</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=Tokipudi" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/ItsMrCube"><img src="https://avatars.githubusercontent.com/u/25201357?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MrCube</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=ItsMrCube" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/bitomic"><img src="https://avatars.githubusercontent.com/u/35199700?v=4?s=100" width="100px;" alt=""/><br /><sub><b>bitomic</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=bitomic" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://c43721.dev/"><img src="https://avatars.githubusercontent.com/u/55610086?v=4?s=100" width="100px;" alt=""/><br /><sub><b>c43721</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=c43721" title="Code">💻</a></td>
-    <td align="center"><a href="https://commandtechno.com/"><img src="https://avatars.githubusercontent.com/u/68407783?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Commandtechno</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=Commandtechno" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/dhruv-kaushikk"><img src="https://avatars.githubusercontent.com/u/73697546?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aura</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=dhruv-kaushikk" title="Code">💻</a></td>
-    <td align="center"><a href="https://axis.moe/"><img src="https://avatars.githubusercontent.com/u/54381371?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jonathan</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=axisiscool" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/imranbarbhuiya"><img src="https://avatars.githubusercontent.com/u/74945038?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Parbez</b></sub></a><br /><a href="#maintenance-imranbarbhuiya" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://github.com/NotKaskus"><img src="https://avatars.githubusercontent.com/u/75168528?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Paul Andrew</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=NotKaskus" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://linktr.ee/mzato0001"><img src="https://avatars.githubusercontent.com/u/62367547?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mzato</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=Mzato0001" title="Code">💻</a> <a href="https://github.com/sapphiredev/utilities/issues?q=author%3AMzato0001" title="Bug reports">🐛</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/MajesticString"><img src="https://avatars.githubusercontent.com/u/66224939?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harry Allen</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=MajesticString" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/EvolutionX-10"><img src="https://avatars.githubusercontent.com/u/85353424?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Evo</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=EvolutionX-10" title="Code">💻</a></td>
-    <td align="center"><a href="https://enes.ovh/"><img src="https://avatars.githubusercontent.com/u/61084101?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Enes Genç</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=enxg" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/muchnameless"><img src="https://avatars.githubusercontent.com/u/12682826?v=4?s=100" width="100px;" alt=""/><br /><sub><b>muchnameless</b></sub></a><br /><a href="https://github.com/sapphiredev/utilities/commits?author=muchnameless" title="Code">💻</a></td>
   </tr>
 </table>
 
