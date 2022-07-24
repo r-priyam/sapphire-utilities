@@ -6,7 +6,7 @@ describe('StringStoreEntry', () => {
 	test('GIVEN empty entry THEN size returns 0', () => {
 		const store = new StringStoreEntry(0, 'test');
 
-		expect(store.id).toBe(0n);
+		expect(store.id).toBe(0);
 		expect(store.name).toBe('test');
 		expect(store.size).toBe(0);
 	});
