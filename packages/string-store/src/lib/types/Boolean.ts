@@ -3,10 +3,10 @@ import type { IType } from './IType';
 export const Boolean: IType<Boolean.Type> = {
 	size: 1,
 	deserialize(buffer) {
-		return buffer.readBit() === 1n;
+		return buffer.readU1() === 1;
 	},
 	serialize(buffer, value) {
-		buffer.writeBit(value ? 1n : 0n);
+		buffer.writeU1(value ? 1 : 0);
 	}
 };
 

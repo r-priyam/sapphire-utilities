@@ -1,8 +1,8 @@
-import type { UnalignedBufferReader } from '../data/UnalignedBufferReader';
-import type { UnalignedBufferWriter } from '../data/UnalignedBufferWriter';
+import type { IReader } from '../data/reader/IReader';
+import type { IWriter } from '../data/writer/IWriter';
 
 export interface IType<SType = unknown, DType = SType> {
 	readonly size: number;
-	serialize(buffer: UnalignedBufferWriter, value: SType): void;
-	deserialize(buffer: UnalignedBufferReader): DType;
+	serialize(buffer: IWriter, value: SType): void;
+	deserialize(buffer: IReader): DType;
 }

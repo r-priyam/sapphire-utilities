@@ -3,10 +3,10 @@ import type { IType } from './IType';
 export const Uint64: IType<Uint64.Input, Uint64.Output> = {
 	size: 64,
 	deserialize(buffer) {
-		return buffer.readBit64();
+		return buffer.readB64();
 	},
 	serialize(buffer, value) {
-		buffer.writeBit64(BigInt(value));
+		buffer.writeB64(value);
 	}
 };
 

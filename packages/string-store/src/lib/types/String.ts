@@ -9,15 +9,16 @@ export function String(length: number | null = null) {
 		const DynamicString: IType<string> = {
 			size: -1,
 			deserialize(buffer) {
-				const length = Number(buffer.readBit8());
+				const length = buffer.readU8();
 				const encoded = new Uint8Array(length);
-				for (let i = 0; i < length; ++i) encoded[i] = Number(buffer.readBit8());
+				for (let i = 0; i < length; ++i) encoded[i] = buffer.readU8();
 				return decoder.decode(encoded);
 			},
 			serialize(buffer, value) {
-				buffer.writeBit8(BigInt(value.length));
-				for (const char of encoder.encode(value)) {
-					buffer.writeBit8(BigInt(char));
+				const encoded = encoder.encode(value);
+				buffer.writeU8(encoded.byteLength);
+				for (const char of encoded) {
+					buffer.writeU8(char);
 				}
 			}
 		};
@@ -29,16 +30,13 @@ export function String(length: number | null = null) {
 		size: length * 8,
 		deserialize(buffer) {
 			const encoded = new Uint8Array(length);
-			for (let i = 0; i < length; ++i) encoded[i] = Number(buffer.readBit8());
+			for (let i = 0; i < length; ++i) encoded[i] = buffer.readU8();
 			return decoder.decode(encoded);
 		},
 		serialize(buffer, value) {
-			let remaining = length;
-			for (const char of encoder.encode(value)) {
-				buffer.writeBit8(BigInt(char));
-				--remaining;
-			}
-			buffer.writeEmpty(BigInt(remaining * 8));
+			const encoded = encoder.encode(value);
+			for (const char of encoded) buffer.writeU8(char);
+			buffer.writeEmpty((length - encoded.byteLength) * 8);
 		}
 	};
 

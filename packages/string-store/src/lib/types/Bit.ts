@@ -1,16 +1,17 @@
+import type { U1 } from '../data/common';
 import type { IType } from './IType';
 
 export const Bit: IType<Bit.Input | Bit.Output, Bit.Output> = {
 	size: 1,
 	deserialize(buffer) {
-		return Number(buffer.readBit()) as Bit.Output;
+		return buffer.readU1();
 	},
 	serialize(buffer, value) {
-		buffer.writeBit(BigInt(value) as Bit.Input);
+		buffer.writeU1(value);
 	}
 };
 
 export namespace Bit {
-	export type Output = 0b00 | 0b01;
-	export type Input = 0b00n | 0b01n;
+	export type Output = U1;
+	export type Input = U1;
 }
