@@ -28,10 +28,11 @@ export class StringStoreEntry {
 	}
 
 	public serialize(writer: IWriter, ...parameters: readonly unknown[]): void {
-		const i = 0;
+		let i = 0;
 		for (const type of this.entries.values()) {
 			if (i >= parameters.length) writer.writeEmpty(type.size);
 			else type.serialize(writer, parameters[i]);
+			++i;
 		}
 	}
 
