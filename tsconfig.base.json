@@ -1,3 +1,4 @@
 {
-	"extends": "./packages/ts-config/extra-strict-without-decorators.json"
+	"extends": "./packages/ts-config/extra-strict-without-decorators.json",
+	"skipLibCheck": true
 }
